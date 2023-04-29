@@ -16,16 +16,23 @@ import pandas as pd
 
 from pandasai import PandasAI
 
-# Sample DataFrame
+import pandas as pd
+from pandasai import PandasAI
+
+Sample DataSet
+
 df=pd.DataFrame({'Country':['United States','United Kindom','France','Germany','Italy','Spain',
                             'Canada','Australia','Ireland','Denmark'],
                 'GDP':[21400000,2940000,2830000,3870000,2160000,1350000,1780000,516000,1400000,1200000],
                 'Happiness_Index':[7.3,7.2,6.5,7.0,6.0,6.0,3.7,3.7,5.9,5.0]
                 })
+# Instantiate a LLM
+from pandasai.llm.openai import OpenAI
+llm= OpenAI(api_token="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")
+pandas_ai=PandasAI(llm)
+pandas_ai.run(df,prompt='which are the 5 happies countries?')
 
 # Instantiate a LLM
 from pandasai.llm.openai import OpenAI
 llm = OpenAI()
 
-pandas_ai = PandasAI(llm)
-pandas_ai.run(df, prompt='Which are the 5 happiest countries?')
